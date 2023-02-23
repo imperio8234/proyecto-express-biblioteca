@@ -2,9 +2,9 @@ const express=require("express");
 const coneccion = require("./coneccion/coneccion");
 const app=express();
 
-const {PORT}= require("./coneccion/variables");
 
-app.get("/", (req, res)=>{
+
+app.get("/api", (req, res)=>{
     coneccion.query("SELECT * FROM usuarios",(err, result)=>{
         if(err){
             console.log("hay un error")
@@ -16,7 +16,7 @@ app.get("/", (req, res)=>{
     })
 })
 
-
+const PORT= process.env.PORT || 1000
 app.listen(PORT);
 console.log("esta escuchando en el puerto "+ PORT)
 
